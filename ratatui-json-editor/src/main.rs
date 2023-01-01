@@ -38,5 +38,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 
 fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<bool> {
+    // --snip--
+    loop {
+        terminal.draw(|f| ui(f, app))?;
         // --snip--
 }
