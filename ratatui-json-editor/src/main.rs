@@ -97,5 +97,16 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
                         KeyCode::Tab => {
                             app.toggle_editing();
                         }
-                        
+                        KeyCode::Char(value) => {
+                            if let Some(editing) = &app.currently_editing {
+                                match editing {
+                                    CurrentlyEditing::Key => {
+                                        app.key_input.push(value);
+                                    }
+                                    CurrentlyEditing::Value => {
+                                        app.value_input.push(value);
+                                    }
+                                }
+                            }
+                        }
 }
