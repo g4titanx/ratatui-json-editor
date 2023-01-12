@@ -82,4 +82,16 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
                                 }
                             }
                         }
+                        KeyCode::Backspace => {
+                            if let Some(editing) = &app.currently_editing {
+                                match editing {
+                                    CurrentlyEditing::Key => {
+                                        app.key_input.pop();
+                                    }
+                                    CurrentlyEditing::Value => {
+                                        app.value_input.pop();
+                                    }
+                                }
+                            }
+                        }
 }
