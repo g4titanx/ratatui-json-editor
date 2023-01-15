@@ -1,0 +1,1 @@
+/home/g4titan/ratatui-json-editor/target/debug/ratatui-json-editor: /home/g4titan/ratatui-json-editor/src/app.rs /home/g4titan/ratatui-json-editor/src/main.rs /home/g4titan/ratatui-json-editor/src/ui.rs
