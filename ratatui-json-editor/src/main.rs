@@ -94,6 +94,10 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
                                 }
                             }
                         }
+                        KeyCode::Esc => {
+                            app.current_screen = CurrentScreen::Main;
+                            app.currently_editing = None;
+                        }
                         KeyCode::Tab => {
                             app.toggle_editing();
                         }
@@ -109,4 +113,10 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
                                 }
                             }
                         }
+                        _ => {}
+                    }
+                }
+                _ => {}
+            }
+        }
 }
