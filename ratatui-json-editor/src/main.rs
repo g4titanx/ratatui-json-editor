@@ -128,6 +128,19 @@ fn run_app<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> io::Result<
             Constraint::Length(3),
         ])
         .split(f.size());
+        let title_block = Block::default()
+        .borders(Borders::ALL)
+        .style(Style::default());
+
+        let title = Paragraph::new(Text::styled(
+        "Create New Json",
+        Style::default().fg(Color::Green),
+        ))
+        .block(title_block);
+
+        f.render_widget(title, chunks[0]);
+    
+    }
 }
 
 pub fn ui(f: &mut Frame, app: &App) {
