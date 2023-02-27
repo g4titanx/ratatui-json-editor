@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 pub enum CurrentScreen {
     Main,
     Editing,
@@ -27,7 +29,7 @@ impl App {
             currently_editing: None,
         }
     }
-    
+
     pub fn save_key_value(&mut self) {
         self.pairs
             .insert(self.key_input.clone(), self.value_input.clone());
