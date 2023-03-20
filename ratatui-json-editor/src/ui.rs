@@ -28,3 +28,15 @@ pub fn ui(f: &mut Frame, app: &App) {
         Style::default().fg(Color::Green),
     ))
     .block(title_block);
+
+    f.render_widget(title, chunks[0]);
+    let mut list_items = Vec::<ListItem>::new();
+
+    for key in app.pairs.keys() {
+        list_items.push(ListItem::new(Line::from(Span::styled(
+            format!("{: <25} : {}", key, app.pairs.get(key).unwrap()),
+            Style::default().fg(Color::Yellow),
+        ))));
+    }
+
+    let list = List::new(list_items);
