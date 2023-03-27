@@ -40,3 +40,15 @@ pub fn ui(f: &mut Frame, app: &App) {
     }
 
     let list = List::new(list_items);
+
+    f.render_widget(list, chunks[1]);
+    let current_navigation_text = vec![
+        // The first half of the text
+        match app.current_screen {
+            CurrentScreen::Main => Span::styled("Normal Mode", Style::default().fg(Color::Green)),
+            CurrentScreen::Editing => {
+                Span::styled("Editing Mode", Style::default().fg(Color::Yellow))
+            }
+            CurrentScreen::Exiting => Span::styled("Exiting", Style::default().fg(Color::LightRed)),
+        }
+        .to_owned(),
