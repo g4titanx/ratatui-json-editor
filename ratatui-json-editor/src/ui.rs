@@ -52,3 +52,21 @@ pub fn ui(f: &mut Frame, app: &App) {
             CurrentScreen::Exiting => Span::styled("Exiting", Style::default().fg(Color::LightRed)),
         }
         .to_owned(),
+        // A white divider bar to separate the two sections
+        Span::styled(" | ", Style::default().fg(Color::White)),
+        // The final section of the text, with hints on what the user is editing
+        {
+            if let Some(editing) = &app.currently_editing {
+                match editing {
+                    CurrentlyEditing::Key => {
+                        Span::styled("Editing Json Key", Style::default().fg(Color::Green))
+                    }
+                    CurrentlyEditing::Value => {
+                        Span::styled("Editing Json Value", Style::default().fg(Color::LightGreen))
+                    }
+                }
+            } else {
+                Span::styled("Not Editing Anything", Style::default().fg(Color::DarkGray))
+            }
+        },
+    ];
