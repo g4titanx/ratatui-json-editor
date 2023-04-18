@@ -70,3 +70,23 @@ pub fn ui(f: &mut Frame, app: &App) {
             }
         },
     ];
+
+    let mode_footer = Paragraph::new(Line::from(current_navigation_text))
+        .block(Block::default().borders(Borders::ALL));
+
+    let current_keys_hint = {
+        match app.current_screen {
+            CurrentScreen::Main => Span::styled(
+                "(q) to quit / (e) to make new pair",
+                Style::default().fg(Color::Red),
+            ),
+            CurrentScreen::Editing => Span::styled(
+                "(ESC) to cancel/(Tab) to switch boxes/enter to complete",
+                Style::default().fg(Color::Red),
+            ),
+            CurrentScreen::Exiting => Span::styled(
+                "(q) to quit / (e) to make new pair",
+                Style::default().fg(Color::Red),
+            ),
+        }
+    };
